@@ -1,0 +1,17 @@
+<CascadingValue Value="this" IsFixed>
+    @{
+        StartCollectingChildren();
+    }
+    @ChildContent
+
+    <Defer>
+        @{
+            FinishCollectingChildren();
+        }
+
+        @foreach (var o in _childComponents)
+        {
+            <p>@o.Title</p>
+        }
+    </Defer>
+</CascadingValue>

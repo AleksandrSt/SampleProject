@@ -1,6 +1,21 @@
 ﻿@page "/"
 
+<h2>
+    Blazor skips the first component:
+</h2>
+
 <ParentComponent>
     <ChildComponent1 Title="Component1"></ChildComponent1>
-    <ChildComponent2 Title="Component2" SampleEnum="SampleEnum.Foo"></ChildComponent2>
+    <ChildComponent2 Title="Component2" SampleEnum="SampleEnum.Bar"></ChildComponent2>
+</ParentComponent>
+
+<hr />
+
+<h2>
+    Blazor re-renders both components:
+</h2>
+
+<ParentComponent>
+    <ChildComponent1 Title="Component1" SampleEnum="SampleEnum.Foo"></ChildComponent1>
+    <ChildComponent2 Title="Component2" SampleEnum="SampleEnum.Bar"></ChildComponent2>
 </ParentComponent>

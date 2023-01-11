@@ -14,16 +14,19 @@ namespace SampleProject.Sample.Components
         public RenderFragment ChildContent { get; set; }
 
         private List<ChildComponentBase> _childComponents = new();
+        private bool _firstRender = true;
         private bool _collectingChildren; // Children might re-render themselves arbitrarily. We only want to capture them at a defined time.
 
-        protected override void OnAfterRender(bool firstRender)
+        protected async Task ProcessDataAsync()
         {
-            if (firstRender)
+            if (_firstRender)
             {
-                //imitate re-render on data getting callback
-                StateHasChanged();
+                //imitating re-render just like it would be an async call
+                await InvokeAsync(StateHasChanged);
+                _firstRender = false;
             }
         }
+
         public void AddChild(ChildComponentBase child)
         {
             _childComponents.Add(child);
